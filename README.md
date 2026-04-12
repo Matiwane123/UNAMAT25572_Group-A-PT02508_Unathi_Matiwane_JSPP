@@ -40,7 +40,7 @@ Modular code split into:
 
 - **JSLPP GitHub Repo**: Your JSLPP GitHub repository
 - Netlify[(https://unamat25572-unathi-matiwane-jspp.netlify.app/)]
-  - You can find the link record for my presentation [Loom][(https://www.loom.com/share/1aa55a9334e745959f9817dd73538816)],
+  - You can find the link record for my presentation [Loom][(https://www.loom.com/share/d3eb324867264f9488fcb9a91d2794c0)],
   - Make sure your recorded presentation link is publicly accessible and is included in your GitHub README.
 
 ## Before You Begin
