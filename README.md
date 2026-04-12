@@ -39,8 +39,7 @@ Modular code split into:
 ## WHAT to Submit
 
 - **JSLPP GitHub Repo**: Your JSLPP GitHub repository
-- **Recorded Presentation:** A **5-10 minutes** presentation of your project demonstrating and talking through how you solved the user stories. No slides are neccessary and you will rather showcase your code and project features as you talk through your solutions.
-  - You can use any of these tools to record your presentation [Veed.io](https://www.veed.io/) [Windows recording](https://www.microsoft.com/en-us/windows/learning-center/how-to-record-screen-windows-11), [Zoom](https://www.zoom.com/), [Loom](https://www.loom.com/), [OBS](https://obsproject.com/), [Screencastify](https://www.screencastify.com/)
+  - You can find the link record for my presentation [Loom](https://www.loom.com/share/1aa55a9334e745959f9817dd73538816),
   - Make sure your recorded presentation link is publicly accessible and is included in your GitHub README.
 
 ## Before You Begin
