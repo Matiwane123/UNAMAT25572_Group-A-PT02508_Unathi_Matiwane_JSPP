@@ -2,18 +2,19 @@
 
 ## Overview
 
-This app provides a clear and well-structured interface for managing tasks. It is designed to be intuitive and responsive, ensuring users can fully interact with all features without confusion.
+This Kanban app is my portfolio piece showcasing modular JavaScript, responsive UI design, and deployment workflows. It provides a clear, intuitive interface for managing tasks, with features like sidebar toggling, dark/light themes, and persistent storage. The app is deployed to Netlify with a custom URL, making it easy to share with recruiters and collaborators.
 
 ## Features
 
 - **Data Handling**
-  - Fetches initial task data from an external API.
-  - Stores data locally using browser local storage for persistence.
+  - Loads initial tasks from local storage (with optional API integration).
+  - Persists all changes automatically in browser local storage.
 
 - **Task Management**
   - Add new tasks with validation.
   - Edit existing tasks directly within the app.
   - Delete tasks when no longer needed.
+  - Task counts update dynamically per column.
 
 - **User Interface**
   - Sidebar functionality:
@@ -21,17 +22,19 @@ This app provides a clear and well-structured interface for managing tasks. It i
   - Theme customization:
     - Toggle between dark and light mode for personalized viewing.
 
-## Instructions
-
-1. Clone the repository and install dependencies.
-2. Run the app locally using your preferred development server.
-3. Interact with the sidebar, add/edit/delete tasks, and switch between themes.
-4. All changes are saved automatically in local storage.
-
 ## Notes
 
-- The app is responsive and works across devices.
-- Clear instructions and intuitive design ensure smooth user interaction.
+Modular code split into:
+
+- tasks.js → task CRUD + localStorage
+
+- sidebar.js → sidebar toggle
+
+- theme.js → dark/light mode
+
+- main.js → initialization
+
+- Recruiter‑friendly README and documentation included.
 
 ## WHAT to Submit
 
@@ -40,39 +43,23 @@ This app provides a clear and well-structured interface for managing tasks. It i
   - You can use any of these tools to record your presentation [Veed.io](https://www.veed.io/) [Windows recording](https://www.microsoft.com/en-us/windows/learning-center/how-to-record-screen-windows-11), [Zoom](https://www.zoom.com/), [Loom](https://www.loom.com/), [OBS](https://obsproject.com/), [Screencastify](https://www.screencastify.com/)
   - Make sure your recorded presentation link is publicly accessible and is included in your GitHub README.
 
-## HOW to Submit Your Project
-
-- Push Final Version to GitHub: Ensure your final work is on GitHub.
-- Project Naming Convention: Make sure the name of your GitHub Repository is correct with the right naming convention. The naming convention is given in the GitHub Repo title. `StudentNo_Classcode_Group_Name-Surname_JSLPP`
-- Include Presentation Assets: Include your recorded presentation link in your GitHub README.
-- Deployment Link: Include a link to your deployed app in your GitHub README.
-- Provide LMS Link: Submit your Project GitHub link via the [Projects] tab > JSLPP PORTFOLIO PIECE > on the Learning Management System.
-
 ## Before You Begin
 
 **Check out the [Figma Reference File](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=6033-11092&t=XbQhBWPYxXDAqp3x-1) and the project user stories in your student dashboard** before you start building.
 
 ## Key Objectives
 
-### Deployment & Hosting
+- Deployment & Hosting: Prepared and deployed to Netlify with custom URL.
 
-- **Prepare the Kanban app files** for deployment, ensuring the project structure aligns with best practices for deployment.
-- **Deploy the Kanban app to Netlify**, following the process of uploading your project and setting a custom deployment link.
-- Test the deployed app to ensure that all features, including task creation, editing, local storage, and sorting, work as expected in a live environment.
+- Data Persistence: Tasks stored and loaded from local storage.
 
-### Initial Data Fetching & Loading State
+- Task Editing & Deletion: Full CRUD functionality with modal.
 
-- **Fetch tasks dynamically** from an API: https://jsl-kanban-api.vercel.app/
+- Sidebar Interaction: Toggleable sidebar with emoji eyes animation.
 
-- **Replace any hard-coded task data**, to ensure the application receives the most up-to-date tasks.
+- Theme Toggle: Dark/Light mode switch in both desktop and mobile views.
 
-- **Display a loading message** while the tasks are being fetched so that users are informed the data is loading.
-- If fetching fails, **show an error message** to alert users to the issue.
-
-### Data Persistence
-
-- **Store fetched tasks in local storage** to ensure data persists across page reloads.
-- On startup, **load tasks from local storage** and display them in their respective columns (To Do, Doing, Done) to maintain an organized task board.
+- Code Quality: Modular structure, descriptive names, documented functions.
 
 ### Task Editing & Deletion
 
