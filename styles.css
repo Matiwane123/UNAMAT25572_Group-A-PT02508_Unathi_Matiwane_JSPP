@@ -1,476 +1,221 @@
-/* ========================
-   Global & Root Variables
-======================== */
-* {
-  box-sizing: border-box; /* Ensures padding and border are included in total element size */
-}
-
 :root {
-  --primary-color: #ffffff;
-  --secondary-color: #f4f7fd;
-  --primary-font-color: #000000;
-  --secondary-font-color: #828fa3;
-  --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015); /* Subtle shadow for card depth */
-  --sidebar-width: 300px; /* Sidebar fixed width */
+  --grey-text: #555;
+  --focus-outline: #0078d4;
 }
 
-/* ================
-   Base Elements
-================ */
 body {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  display: flex; /* Allow layout to span horizontally */
-  flex-direction: row;
-  width: 100%;
-  min-height: 100vh;
+  font-family: "Inter", sans-serif;
   margin: 0;
-  background-color: var(--secondary-color);
-  font-size: 1rem; /* Base font size for rem scaling */
+  background: #f9f9f9;
 }
 
-/* ================
-   Sidebar Layout
-================ */
-.side-bar {
+.app-header {
   display: flex;
-  flex-direction: column;
-  background-color: var(--primary-color);
-  border-right: 1px solid #e4ebfa; /* Light divider */
-  width: var(--sidebar-width);
-  height: 100vh;
-}
-
-#side-logo-div {
-  margin: 33px 113px 54px 34px; /* Spacing around logo */
-  display: flex;
-  justify-content: flex-start;
-}
-
-#logo {
-  width: 100%; /* Make logo responsive within container */
-}
-
-.boards-nav-links-div {
-  display: flex;
-  flex-direction: column;
-  color: var(--primary-font-color);
-}
-
-#headline-sidepanel {
-  padding: 0 12px 0 50px; /* Aligns section content from left and right */
-}
-
-h4 {
-  color: var(--secondary-font-color);
-  font-size: 0.75rem;
-  letter-spacing: 0.125rem; /* Makes heading more spaced */
-}
-
-.board-btn {
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between icon and text */
-  background-color: #635fc7;
-  color: #fff;
-  border: none;
-  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
-  height: 48px;
-  width: 276px;
-  padding: 28px 12px 28px 50px;
-  font-size: 0.9375rem;
-  font-weight: bold;
-  cursor: pointer;
-  overflow: hidden; /* Prevents overflowed text/icons from showing */
-}
-
-/* ===============
-   Main Layout
-================ */
-#layout {
-  flex: 1; /* Fills remaining space beside sidebar */
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  width: 100%;
-}
-
-/* ===============
-   Header Section
-================ */
-header {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: var(--primary-color);
-  color: var(--primary-font-color);
-  height: 96px;
-  padding: 0 35px 0 30px;
-  border-bottom: 1px solid #e4ebfa;
-  width: 100%;
-  font-size: 1.875rem;
-  font-weight: 600;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.header-name-div {
-  display: flex;
-  align-items: center;
+.filters select {
+  margin-left: 1rem;
+  padding: 0.5rem;
 }
 
-.logo-mobile {
-  display: none; /* Hidden on desktop; shown on smaller screens */
-}
-
-/* ===============
-   Board Columns
-================ */
-.container {
-  display: flex;
-  flex-direction: column;
-  padding-left: 35px;
-  box-sizing: border-box;
-}
-
-.card-column-main {
+.grid {
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    minmax(0, 304px)
-  ); /* 3 columns with min size */
-  gap: 8px; /* Space between columns */
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  padding: 1rem;
 }
 
-.column-div {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 12px;
+/* Empty state message */
+.grid:empty::before {
+  content: "No podcasts available";
+  color: var(--grey-text);
+  font-size: 0.9rem;
+  display: block;
+  text-align: center;
+  padding: 2rem;
 }
 
-.column-head-div {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between dot and column title */
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.columnHeader {
-  font-size: 0.75rem;
-  letter-spacing: 0.125rem;
-  color: var(--secondary-font-color);
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.card h3 {
+  margin: 0.5rem 0;
+}
+
+.card p {
   margin: 0;
+  font-size: 0.8rem;
+  color: var(--grey-text);
 }
 
-/* Status Dots */
-.dot {
-  height: 15px;
-  width: 15px;
-  border-radius: 50%; /* Make it circular */
+.tags {
+  margin: 0.5rem 0;
+}
+
+.tag {
+  background: #eee;
+  padding: 0.3rem 0.6rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
   display: inline-block;
+  font-size: 0.8rem;
+  transition: background 0.2s ease;
 }
 
-#todo-dot {
-  background-color: #49c4e5;
+.tag:hover,
+.tag:focus {
+  background: #ddd;
 }
 
-#doing-dot {
-  background-color: #8471f2;
+.updated-text {
+  font-size: 0.8rem;
+  color: var(--grey-text);
 }
 
-#done-dot {
-  background-color: #219c90;
-}
-
-/* ===============
-   Task Cards
-================ */
-.tasks-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.task-div {
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-  width: 100%;
-  height: 60px;
-  background-color: var(--primary-color);
-  color: var(--primary-font-color);
-  border-radius: 12px;
-  box-shadow: var(--primary-box-shadow);
-  cursor: pointer; /* Indicate it's clickable */
-  margin-bottom: 20px;
-  font-size: 0.9375rem;
-  font-weight: bold;
-}
-
-/* ===============
-   Headings
-================ */
-h2 {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
-/* ========================
-   Responsive Styles
-======================== */
-
-/******** Tablets ********/
-@media screen and (max-width: 1023px) {
-  .side-bar {
-    display: none; /* Hide sidebar on tablets and smaller */
-  }
-
-  .side-bar.show-sidebar {
-    display: flex !important;
-    position: fixed; /* Overlay on top of page */
-    height: auto;
-  }
-
-  #side-logo-div {
-    display: none;
-  }
-
-  .logo-mobile {
-    display: block;
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-  }
-
-  body {
-    font-size: 0.8rem;
-  }
-
-  .board-btn {
-    font-size: 0.8rem;
-    padding-left: 15px;
-    margin-right: 15px;
-    font-weight: 700;
-  }
-
-  .container {
-    padding: 0;
-    width: 100%;
-    align-items: center; /* Center columns on smaller screens */
-  }
-
-  .card-column-main {
-    grid-template-columns: repeat(2, minmax(0, 360px));
-    gap: 8px;
-  }
-
-  header {
-    height: 64px;
-    padding: 0 10px 0 18px;
-    border: none;
-  }
-
-  #header-board-name {
-    font-size: 1rem;
-  }
-
-  .task-div {
-    width: 100%;
-  }
-
-  .columnHeader {
-    font-size: 0.75rem;
-  }
-
-  .dot {
-    height: 8px;
-    width: 8px;
-  }
-
-  .column-head-div {
-    gap: 8px;
-  }
-
-  .column-div {
-    width: 100%;
-  }
-}
-
-/******** Mobile ********/
-@media screen and (max-width: 576px) {
-  .card-column-main {
-    grid-template-columns: minmax(
-      0,
-      380px
-    ); /* Stack columns in single column */
-  }
-
-  .column-div {
-    padding: 24px;
-  }
-}
-
+/* Modal */
 .modal {
-  display: none; /* Hidden by default */
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Backdrop effect */
-
-  /* Flexbox centering */
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.modal.show {
-  /* Add this class when opening */
-  display: flex;
+  z-index: 100;
 }
 
 .modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  width: 320px;
-  max-width: 90%; /* Responsive on small screens */
-  box-shadow: var(--primary-box-shadow);
+  background: white;
+  max-width: 900px;
+  width: 90%;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.title-section {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-section h2 {
+  margin-top: 0;
+}
+
+.banner {
+  display: flex;
+}
+
+.info-section {
+  margin-left: 10px;
+}
+
+.info-section h3 {
+  margin: 0;
+}
+
+.info-section p {
+  color: var(--grey-text);
+}
+
+.modal-img {
+  width: 45%;
+  border-radius: 6px;
+  align-self: flex-start;
+  height: auto;
+}
+
+.modal-updated-text {
+  font-size: 0.8rem;
+  color: var(--grey-text);
+  margin-top: 25px;
+}
+
+.season-list {
+  padding-left: 0;
+}
+
+.season-item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgb(223, 218, 218);
+  border-radius: 6px;
+  padding: 20px 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.episodes {
+  color: var(--grey-text);
+  font-size: 0.75rem;
 }
 
 .close-btn {
-  align-self: flex-end;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-#save-task {
-  background-color: #635fc7; /* Blue background */
-  color: #fff; /* White text */
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background: transparent;
   border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 2rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-#save-task:hover {
-  background-color: #5146c2; /* Slightly darker blue on hover */
-}
-
-.task-card {
-  background-color: #fff; /* bright blue */
-  color: #fff; /* white text for contrast */
-  border-radius: 6px;
-  padding: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-.task-card:hover {
-  transform: scale(1.02);
-  transition: transform 0.2s ease;
-}
-
-.primary-btn {
-  background-color: #007bff; /* bright blue */
-  color: #fff; /* white text for contrast */
-  border: none;
-  border-radius: 6px;
-  padding: 10px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.primary-btn:hover {
-  background-color: #0056b3; /* darker blue on hover */
-}
-
-/* Sidebar footer */
-.sidebar-footer {
-  margin-top: auto; /* Pushes button to bottom */
-  padding: 16px;
-  text-align: center;
-}
-
-/* Toggle button styling */
-.sidebar-toggle-btn .theme-toggle-btn {
-  background: none;
-  border: 1px solid var(--secondary-font-color);
-  border-radius: 4px;
-  padding: 8px 12px;
-  font-size: 14px;
-  cursor: pointer;
-  color: var(--primary-font-color);
-  transition: background 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px; /* space between emoji and text */
-}
-
-.sidebar-toggle-btn:hover .theme-toggle-btn:hover {
-  background: var(--secondary-color);
-}
-
-/* Sidebar hidden state */
-#side-bar-div.hidden {
-  transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
 
-/* ========================
-   Dark Mode Theme
-======================== */
-body.dark-mode {
-  --primary-color: #000000;
-  --secondary-color: #121212;
-  --primary-font-color: #ffffff;
-  --secondary-font-color: #bbbbbb;
-  --primary-box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
-  background-color: var(--secondary-color);
-  color: var(--primary-font-color);
+.close-btn:hover {
+  color: red;
+  transform: scale(1.2);
 }
 
-body.dark-mode .task-div {
-  background-color: #1e1e1e;
-  color: #ffffff;
+.close-btn:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
 }
 
-body.dark-mode header {
-  background-color: #1e1e1e;
-  border-bottom: 1px solid #333;
+.hidden {
+  display: none;
 }
 
-body.dark-mode .side-bar {
-  background-color: #1e1e1e;
-  border-right: 1px solid #333;
-}
-
-@keyframes wiggle {
-  0% {
-    transform: rotate(0deg);
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
   }
-  15% {
-    transform: rotate(-10deg);
+  .banner {
+    flex-direction: column;
   }
-  30% {
-    transform: rotate(10deg);
+  .modal-img {
+    width: 100%;
+    border-radius: 6px;
   }
-  45% {
-    transform: rotate(-10deg);
+  .info-section {
+    margin-left: 0;
   }
-  60% {
-    transform: rotate(10deg);
+  .info-section p {
+    font-size: 0.75rem;
   }
-  75% {
-    transform: rotate(-5deg);
+  .season-title {
+    font-size: 0.8rem;
   }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.wiggle {
-  animation: wiggle 0.6s ease-in-out;
 }
